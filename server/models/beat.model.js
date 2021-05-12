@@ -4,15 +4,18 @@ const Schema = mongoose.Schema;
 
 const beatSchema = new Schema({
     squares:{
-        type: [[Number]]
+        type: [[Number]],
+        required: true
     },
     bpm:{
-        type: Number
+        type: Number,
+        required: true
     },
     title:{
         type: String,
         trim: true,
-        unique: true
+        unique: true,
+        required: true
     }
 }, {
     timestamps: true
