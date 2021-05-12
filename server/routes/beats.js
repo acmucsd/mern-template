@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
   const squares = req.body.squares;
   const bpm = req.body.bpm;
 
-  const newBeat = new Beat({sqaures, bpm, title});
+  const newBeat = new Beat({squares, bpm, title});
   newBeat.save()
     .then(() => res.json('Success!'))
     .catch(err => res.status(400).json('Error: ' + err));
