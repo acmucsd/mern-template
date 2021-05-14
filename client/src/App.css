@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+#sign-button {
+  position: absolute;
+  right: 0px;
+  border: none;
+  padding: 10px;
+  background-color: #507065;
+  border-style: solid;
+  border-radius: 10px;
+  color: white;
+
+}
