@@ -4,7 +4,6 @@
 
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   font-size: calc(10px + 2vmin);
 }
@@ -19,32 +18,69 @@
   padding: 10px;
   background-color: #507065;
   border-radius: 40px;
+  font-family: 'Russo One', sans-serif;
   color: #F4EBE3;
+}
+#sign-button:hover {
+  background-color: #5e8577;
+}
+#sign-button:active {
+  background-color: #455f56;
 }
 
 #log-button {
-position: absolute;
-width: 199px;
-height: 45px;
-left: 1205px;
-top: 82px;
-background: #A4AEB6;
-border-radius: 40px;
-color: #F4EBE3;
+  position: absolute;
+  width: 199px;
+  height: 45px;
+  left: 1205px;
+  top: 82px;
+  border: none;
+  background: #A4AEB6;
+  border-radius: 40px;
+  color: #F4EBE3;
+  font-family: 'Russo One', sans-serif;
+}
+#log-button:hover {
+  background-color: #b6c6d3;
+}
+#log-button:active {
+  background-color: #878f96;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
 #header-name {
-  justify-content: center; 
-  color: #F4EBE3;
+  justify-content: center;
+  font-family: 'Russo One', sans-serif;
+  font-size: 66px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 116px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #ECB858;
 }
 
 #play-button {
-  position: absolute;
-  width: 93px;
-  height: 76px;
+  width: 60px;
+  height: 60px;
   left: 85px;
-  top: 241px;
+  top: 1px;
   background-color: #ECB858;
   color: #F4EBE3;
-  border-radius: 40px;
+  border-radius: 20px;
+  border:none;
+  justify-content: center;
+}
+#play-button:hover {
+  background-color: #fccc75;
+}
+#play-button:active {
+  background-color: #ddaa4a;
+}
+
+#play-icon {
+  height:25px;
+  width:25px;
+  fill:white;
 }
