@@ -1,12 +1,15 @@
 .App {
   text-align: center;
+  width: 100vw; 
+  height: 100vh;
+  justify-content: center;
 }
 
-
+/* 
 .App-header {
   min-height: 100vh;
   font-size: calc(10px + 2vmin);
-}
+} */
 
 #sign-button {
   position:absolute;
@@ -19,6 +22,7 @@
   background-color: #507065;
   border-radius: 40px;
   font-family: 'Russo One', sans-serif;
+  font-size: 20px;
   color: #F4EBE3;
 }
 #sign-button:hover {
@@ -39,6 +43,7 @@
   border-radius: 40px;
   color: #F4EBE3;
   font-family: 'Russo One', sans-serif;
+  font-size: 20px;
 }
 #log-button:hover {
   background-color: #b6c6d3;
@@ -83,4 +88,55 @@
   height:25px;
   width:25px;
   fill:white;
+}
+
+.play-bpm-export {
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#bpm-input {
+  height: 50px;
+  width: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: 'Russo One', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+}
+
+#export-button {
+  width: 199px;
+  height: 50px;
+  border: none;
+  background: #E7E0D1;
+  border-radius: 40px;
+  color: #000000;
+  font-family: 'Russo One', sans-serif;
+  font-size: 20px;
+}
+#export-button:hover {
+  background-color: #fff6e3;
+}
+#export-button:active {
+  background-color: #d8ccb3;
+}
+
+#grid-container {
+  width: 100vw;
+  padding-top: 50px;
+}
+
+.grid-button {
+  width: 50px;
+  height: 50px;
+  border: none;
+  margin: 5px;
+}
+.grid-button:hover {
+  background-color: #ffd17c;
 }
