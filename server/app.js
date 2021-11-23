@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 // Setup routers
-app.use("/users", require('./routes/users'));
+app.use("/", require('./routes/users'));
 
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
