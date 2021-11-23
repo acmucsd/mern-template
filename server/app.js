@@ -3,17 +3,21 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-const usersRouter = require('./routes/users');
+dotenv.config({path:'./server/.env'});
 
+// Setup express server
 const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/users', usersRouter);
+// Start the app
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
-dotenv.config();
+// Setup routers
+app.use("/users", require('./routes/users'));
 
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
