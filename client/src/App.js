@@ -43,10 +43,10 @@ class App extends Component {
         password: hashedPassword,
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success === true) {
-          console.log("reach here?");
-          console.log(response.data.user);
+          //   console.log("reach here?");
+          //   console.log(response.data.user);
           const user = response.data.user;
           this.setState({
             IsLoggedIn: true,
@@ -55,6 +55,28 @@ class App extends Component {
         } else {
           this.setState({
             ErrorMessage: "The username has already be taken!",
+          });
+        }
+      });
+  };
+
+  handleLogin = (username, password) => {
+    const hashedPassword = bcrypt.hashSync(password, salt);
+    axios
+      .post(BaseURL + "/login", {
+        username: username,
+        password: hashedPassword,
+      })
+      .then((response) => {
+        if (response.data.success === true) {
+          const user = response.data.user;
+          this.setState({
+            IsLoggedIn: true,
+            User: user,
+          });
+        } else {
+          this.setState({
+            ErrorMessage: "Wrong username or password!",
           });
         }
       });
@@ -70,7 +92,15 @@ class App extends Component {
             <Home />
           </Route>
           <Route exact path="/login">
-            <Login />
+            {loggedIn ? (
+              <Redirect to="/" />
+            ) : (
+              <Login
+                onLogin={this.handleLogin}
+                errorMessage={this.state.ErrorMessage}
+                user={this.state.User}
+              />
+            )}
           </Route>
           <Route exact path="/register">
             {loggedIn ? (
