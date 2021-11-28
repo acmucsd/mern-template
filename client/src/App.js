@@ -43,10 +43,7 @@ class App extends Component {
         password: hashedPassword,
       })
       .then((response) => {
-        // console.log(response.data);
         if (response.data.success === true) {
-          //   console.log("reach here?");
-          //   console.log(response.data.user);
           const user = response.data.user;
           this.setState({
             IsLoggedIn: true,
@@ -84,7 +81,6 @@ class App extends Component {
 
   render() {
     const loggedIn = this.state.IsLoggedIn;
-    console.log(this.state);
     return (
       <Router>
         <Switch>

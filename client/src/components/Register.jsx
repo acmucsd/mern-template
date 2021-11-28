@@ -46,7 +46,6 @@ class Login extends Component {
   }
 
   handleUserNameChange(event) {
-    console.log("reach here?");
     this.setState({ UserNameChanged: true });
   }
 
