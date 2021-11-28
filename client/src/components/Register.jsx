@@ -2,16 +2,21 @@ import React, { Component } from "react";
 import { Button, Form, Card, Container } from "react-bootstrap";
 
 class Login extends Component {
-  state = {
-    formValue: {
-      email: "",
-      username: "",
-      password: "",
-      passwordConfirm: "",
-    },
-    PwLengthOK: true,
-    PwConsistency: true,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      formValue: {
+        email: props.user.email,
+        username: props.user.username,
+        name: props.user.name,
+        password: "",
+        passwordConfirm: "",
+      },
+      PwLengthOK: true,
+      PwConsistency: true,
+      UserNameChanged: false,
+    };
+  }
 
   checkPwConsistency(event) {
     // It will update the password Confirm state value and check consistency
@@ -31,6 +36,7 @@ class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({ UserNameChanged: false });
     this.props.onRegister(
       event.target[0].value,
       event.target[1].value,
@@ -39,7 +45,14 @@ class Login extends Component {
     );
   }
 
+  handleUserNameChange(event) {
+    console.log("reach here?");
+    this.setState({ UserNameChanged: true });
+  }
+
   render() {
+    const UserNameDuplicate =
+      this.props.errorMessage === "The username has already be taken!";
     return (
       <Container>
         <div className="d-flex justify-content-center" style={{ padding: 120 }}>
@@ -52,6 +65,7 @@ class Login extends Component {
                   <Form.Control
                     type="Email"
                     placeholder="Enter Email"
+                    defaultValue={this.state.formValue.email}
                     required
                   />
                 </Form.Group>
@@ -62,7 +76,13 @@ class Login extends Component {
                     type="text"
                     placeholder="Enter Username"
                     required
+                    defaultValue={this.state.formValue.username}
+                    onChange={this.handleUserNameChange.bind(this)}
+                    isInvalid={UserNameDuplicate && !this.state.UserNameChanged}
                   />
+                  <Form.Control.Feedback type="invalid">
+                    {this.props.errorMessage}
+                  </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -88,7 +108,10 @@ class Login extends Component {
                   </Form.Control.Feedback>
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formGroupPassword">
+                <Form.Group
+                  className="mb-3"
+                  controlId="formGroupPasswordConfirm"
+                >
                   <Form.Label>Confirm Password:</Form.Label>
                   <Form.Control
                     type="password"
