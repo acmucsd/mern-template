@@ -2,8 +2,9 @@ const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
-dotenv.config({path:'./server/.env'});
+dotenv.config();
 
 // Setup express server
 const app = express();
@@ -12,6 +13,7 @@ const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 // Start the app
 const PORT = process.env.PORT || 5000;
