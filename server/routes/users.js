@@ -14,10 +14,9 @@ router.get('/', function(req, res, next) {
 
 // User registration
 router.post('/register', async (req, res) => {
+  // TODO: jwt authentication
   try {
     const { email, username, name, password } = req.body;
-
-    // TODO: Verify duplicate username and email
 
     // Check if there is a duplicate username
     const existingUserUsername = await User.findOne({ username });
@@ -49,6 +48,7 @@ router.post('/register', async (req, res) => {
 
     const savedUser = await newUser.save();
 
+    // Return with status 200
     return res.status(200).json({
       success: true,
       error_message: null,
