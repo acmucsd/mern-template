@@ -20,22 +20,22 @@ router.post('/register', async function(req, res, next) {
     // TODO: Verify duplicate username and email
 
     // Check if there is a duplicate username
-    const existingUser = await User.findOne({ username });
-    if (existingUser) {
+    const existingUserUsername = await User.findOne({ username });
+    if (existingUserUsername) {
       return res.status(400).json({
         success: false,
         error_message: 'An account with the username already exists.',
-        user: existingUser
+        user: existingUserUsername
       });
     }
 
     // Check if there is a duplicate email
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
+    const existingUserEmail = await User.findOne({ email });
+    if (existingUserEmail) {
       return res.status(400).json({
         success: false,
         error_message: 'An account with the email already exists.',
-        user: existingUser
+        user: existingUserEmail
       });
     }
 
