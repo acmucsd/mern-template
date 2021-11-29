@@ -8,6 +8,7 @@ dotenv.config({path:'./server/.env'});
 // Setup express server
 const app = express();
 
+// Middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -17,8 +18,9 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 // Setup routers
-app.use("/", require('./routes/users'));
+app.use('/', require('./routes/users'));
 
+// Connect to mongoDB
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true }).then(() => {
