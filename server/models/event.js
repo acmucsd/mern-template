@@ -3,7 +3,7 @@ const UserSchema = require('./user');
 
 const EventSchema = new mongoose.Schema(
     {
-        created: {
+        createdAt: {
             type: Date,
             default: Date.now(),
         },
@@ -16,7 +16,11 @@ const EventSchema = new mongoose.Schema(
             required: true,
         },
         attending: [{ user: [UserSchema] }],
-        date: {
+        startDate: {
+            type: Date,
+            required: true,
+        },
+        endDate: {
             type: Date,
             required: true,
         },
@@ -24,14 +28,17 @@ const EventSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        host: [{ user: [UserSchema] }],
-        facebook: {
+        host: {
+            type: UserSchema,
+            required: true,
+        },
+        facebookUrl: {
             type: String,
         },
-        instagram: {
+        instagramUrl: {
             type: String,
         },
-        discord: {
+        discordUrl: {
             type: String,
         }
     }

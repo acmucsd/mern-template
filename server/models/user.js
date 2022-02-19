@@ -3,7 +3,11 @@ const EventSchema = require('./event');
 
 const UserSchema = new mongoose.Schema(
     {
-        username: {
+        firstName: {
+            type: String,
+            required: true,
+        },
+        lastName: {
             type: String,
             required: true,
         },
@@ -11,40 +15,35 @@ const UserSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        // Hash password? Not sure exactly how to do
+        // Hash password
         password: {
             type: String,
             required: true,
         },
-        facebook: {
+        facebookUrl: {
             type: String,
         },
-        instagram: {
+        instagramUrl: {
             type: String,
         },
-        discord: {
+        discordUrl: {
             type: String,
         },
         bio: {
             type: String,
         },
-        interests: [{ interest: String }],
+        interests: [String],
         // Class/year Ex: 4th year
-        year: {
+        gradYear: {
             type: Number,
         },
         // quarter Number or string?
         classes: [{ class: String, year: Number, quarter: String }],
-        // Profile picture?
+        // Profile picture, can do AWS also
         pfp: {
             data: Buffer,
             contentType: String
         },
-        // Events attending
-        attending: [{ event: [EventSchema] }],
-        // Events hosting
-        hosting: [{ event: [EventSchema] }],
-
 
     }
 );
