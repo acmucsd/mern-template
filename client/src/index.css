@@ -1,13 +1,233 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+/* Login Screen */
+.bodyLogin{
+  /* background-image: url(https://polisci.ucsd.edu/_images/210115-Geisel-135DSC_7396-UCSanDiego-ErikJepsen_1.jpeg); */
+  background-image: url(https://live.staticflickr.com/4106/5133980202_fb59dc48f6_b.jpg);
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: auto;
+  background-size: cover;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.containerLogin{
+  max-width: 300px;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid black;
+  padding: 50px;
+  border-radius: 5px;
+  margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: 'Oswald', sans-serif;
+  background-color: white;
+}
+
+.Login{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.logtitle{
+  font-size: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5px;
+}
+
+.add-form{
+  margin-bottom: 20px;
+  color: #008CBA;
+}
+
+.form-control label{
+  display: block;
+}
+
+.form-control input{
+  width: 100%;
+  height: 40px;
+  margin-bottom: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.loginbtn{
+  border: none;
+  background-color:#008CBA;
+  width: 80px;
+  height: 40px;
+  color:white;
+  font-family: 'Oswald', sans-serif;
+  transition-duration: 0.4s;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loginbtn:hover{
+  background-color: white;
+  color:#008CBA;
+}
+
+.createacc{
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Create Account */
+.CreateAccount{
+  display: flex;
+  flex-direction: column;
+}
+
+.createaccTitle{
+  font-size: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.backtoLogin{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.createbtn{
+  border: none;
+  background-color:#008CBA;
+  width: 150px;
+  height: 40px;
+  color:white;
+  font-family: 'Oswald', sans-serif;
+  transition-duration: 0.4s;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.createbtn:hover{
+  background-color: white;
+  color:#008CBA;
+}
+
+/* User Screen */
+.containerUser{
+  max-width: 700px;
+  overflow: auto;
+  min-height: 500px;
+  border: 1px solid black;
+  padding: 50px;
+  border-radius: 5px;
+  margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: 'Oswald', sans-serif;
+  background-color: white;
+}
+
+.user{
+  display: flex;
+  flex-direction: column;
+}
+
+.bodyUser{
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: auto;
+  background-size: cover;
+}
+
+.userAvatar{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.userName{
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px;
+}
+
+.userGrad{
+  margin-top: 2.5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.userSocialImages{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 150px;
+}
+
+.userIGFB{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.userIGFBNames{
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-right: 0px;
+}
+
+.userDCLI{
+  display: flex;
+}
+
+.userDCLINames{
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-right: -36px;
+}
+
+.userEvents{
+  font-size: 25px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* User Edit Screen */
+.userEdit{
+  display: flex;
+  flex-direction: column;
+}
+
+.userEditTitle{
+  font-size: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+/* User Events Screen */
+.userEventsTitle{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 30px;
+}
+
+.userEvents{
+  display: flex;
+  flex-direction: column;
+}
+
+.backToUser{
+  text-align: center;
+  margin-top: 30pxnp;
 }
