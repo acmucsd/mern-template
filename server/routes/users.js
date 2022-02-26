@@ -18,7 +18,7 @@ router.put("/events/:id", async function (req, res) {
     const { id, update } = req.params;
     const event = await Event.findByIdAndUpdate(id, update);
     if (event) {
-      return res.status(404).json({ error: `Event Do Not Exist`, id });
+      return res.status(404).json({ error: "Event does not exist", id });
     }
     res.status(200).json({ event });
   } catch (error) {
@@ -31,7 +31,7 @@ router.put("/users/:id", async function (req, res) {
     const { id, update } = req.params;
     const user = await User.findByIdAndUpdate(id, update);
     if (!user) {
-      return res.status(404).json({ error: `User Do Not Exist`, id });
+      return res.status(404).json({ error: "User does not exist", id });
     }
     res.status(200).json({ user });
   } catch (error) {
