@@ -17,7 +17,7 @@ router.put("/events/:id", async function (req, res) {
   try {
     const { id, update } = req.params;
     const event = await Event.findByIdAndUpdate(id, update);
-    if (event) {
+    if (!event) {
       return res.status(404).json({ error: "Event does not exist", id });
     }
     res.status(200).json({ event });
@@ -40,15 +40,29 @@ router.put("/users/:id", async function (req, res) {
 });
 
 router.delete("/events/:id", async function (req, res) {
-  await Event.findByIdAndDelete(req.params.id)
-    .then((event) => res.status(200).json({ event }))
-    .catch((err) => res.status(400).json({ error: err }));
+  try {
+    const { id } = req.params;
+    const event = await Event.findByIdAndDelete(id);
+    if (!event) {
+      return res.status(404).json({ error: "Event does not exist", id });
+    }
+    res.status(200).json({ event });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 });
 
 router.delete("/users/:id", async function (req, res) {
-  await User.findByIdAndDelete(req.params.id)
-    .then((user) => res.status(200).json({ user }))
-    .catch((err) => res.status(400).json({ error: err }));
+  try {
+    const { id } = req.params;
+    const user = await User.findByIdAndDelete(id);
+    if (!user) {
+      return res.status(404).json({ error: "User does not exist", id });
+    }
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 });
 
 module.exports = router;
