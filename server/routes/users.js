@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-let Event = require("../models/event.model");
-let User = require("../models/user.model");
+const Event = require("../models/event.model");
+const User = require("../models/user.model");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -13,40 +13,40 @@ router.get("/", function (req, res, next) {
   res.status(200).json({ user });
 });
 
-router.put("/events/:id", function (req, res) {
+router.put("/events/:id", async function (req, res) {
   try {
     const { id, update } = req.params;
-    var thisEvent = Event.findByIdAndUpdate(id, update);
-    if (!thisEvent) {
+    const event = await Event.findByIdAndUpdate(id, update);
+    if (event) {
       return res.status(404).json({ error: `Event Do Not Exist`, id });
     }
-    res.status(200).json({ event: thisEvent });
-  } catch {
-    res.status(500).json({ error: `Server Process Error` });
+    res.status(200).json({ event });
+  } catch (error) {
+    res.status(500).json({ error });
   }
 });
 
-router.put("/users/:id", function (req, res) {
+router.put("/users/:id", async function (req, res) {
   try {
     const { id, update } = req.params;
-    var thisUser = User.findByIdAndUpdate(id, update);
-    if (!thisUser) {
+    const user = await User.findByIdAndUpdate(id, update);
+    if (!user) {
       return res.status(404).json({ error: `User Do Not Exist`, id });
     }
-    res.status(200).json({ user: thisUser });
-  } catch {
-    res.status(500).json({ error: `Server Process Error` });
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ error });
   }
 });
 
-router.delete("/events/:id", function (req, res) {
-  Event.findByIdAndDelete(req.params.id)
+router.delete("/events/:id", async function (req, res) {
+  await Event.findByIdAndDelete(req.params.id)
     .then((event) => res.status(200).json({ event }))
     .catch((err) => res.status(400).json({ error: err }));
 });
 
-router.delete("/users/:id", function (req, res) {
-  User.findByIdAndDelete(req.params.id)
+router.delete("/users/:id", async function (req, res) {
+  await User.findByIdAndDelete(req.params.id)
     .then((user) => res.status(200).json({ user }))
     .catch((err) => res.status(400).json({ error: err }));
 });
