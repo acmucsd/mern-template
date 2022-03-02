@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon app.js",
     "start": "node ./bin/www"
   },
   "dependencies": {
