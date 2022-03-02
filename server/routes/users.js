@@ -1,15 +1,51 @@
 const express = require("express");
+const mongoose = require("mongoose");
+
+const UserSchema = require("../models/user");
+const User = mongoose.model('User', UserSchema);
+
+const EventSchema = require("../models/event");
+const Event = mongoose.model('Event', EventSchema);
+
 const router = express.Router();
 
-const User = require("../models/user");
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  const user = {
-    name: "ACM Hack",
-    email: "hack@acmucsd.org",
-  };
-  res.status(200).json({ user });
+
+// Get all events User with id is attending
+router.get("/:id/events", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+    const events = await Event.find({ attending: user }).exec();
+    res.status(200).json({ events });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
+// Get User by id
+router.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
+// Get all Users
+router.get("/", async (req, res, next) => {
+  try {
+    const user = await User.find().exec();
+
+    res.status(200).json({ user });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error });
+  }
 });
 
 router.put("/:id", async function (req, res) {
