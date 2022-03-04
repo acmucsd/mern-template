@@ -12,6 +12,13 @@ router.get("/", function (req, res, next) {
   res.status(200).json({ user });
 });
 
+//POST user(under the assumption input is correct)
+router.post("/", async function (req, res) {
+  const { user } = req.body;
+  const newUser = await User.create(user);
+  res.status(200).json({ newUser });
+});
+
 router.put("/:id", async function (req, res) {
   try {
     const { id, update } = req.params;
