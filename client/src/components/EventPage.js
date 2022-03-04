@@ -4,7 +4,6 @@ export const EventPage = () => {
     useEffect(() => {
 
       });
-
     return (
     <div className = 'containerEvent'>
         <div className = 'eventPage'>

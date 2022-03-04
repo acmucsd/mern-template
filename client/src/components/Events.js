@@ -4,7 +4,6 @@ export const Events = () => {
     useEffect(() => {
 
       });
-
     return (
     <div className = 'containerEvent'>
         <div className = 'events'>Events</div>
