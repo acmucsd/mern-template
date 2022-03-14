@@ -11,7 +11,7 @@ const EventSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        desciption: {
+        description: {
             type: String,
             required: true,
         },
@@ -44,4 +44,6 @@ const EventSchema = new mongoose.Schema(
     }
 )
 
-module.exports = EventSchema;
+const Event = mongoose.model('Event', EventSchema);
+
+module.exports = Event;
