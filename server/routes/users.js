@@ -6,12 +6,20 @@ const User = mongoose.model('User', UserSchema);
 
 const EventSchema = require("../models/event");
 const Event = mongoose.model('Event', EventSchema);
+// Is this the proper way to setup models?
+// Ran into problems because we use the Schemas in each other
+// so we can't export as models but we need the models for this
+
+// app.js/index.js setup stuff
+
 
 const router = express.Router();
 
 
 /* GET users listing. */
 
+
+//FIX
 // Get all events User with id is attending
 router.get("/:id/events", async (req, res, next) => {
   try {
