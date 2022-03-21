@@ -38,8 +38,9 @@ router.post("/", async function (req, res) {
 
 router.put("/:id", async function (req, res) {
   try {
-    const { id, update } = req.params;
-    const event = await Event.findByIdAndUpdate(id, update);
+    const { id } = req.params;
+    const { update } = req.body;
+    const event = await Event.findByIdAndUpdate(id, update, { new: true });
     if (!event) {
       return res.status(404).json({ error: "Event does not exist", id });
     }
@@ -66,14 +67,17 @@ router.post("/:id/attendance/:userID", async function (req, res) {
   try {
     const { id, userID } = req.params;
     const event = await Event.findById(id);
-    const user = await User.findById(userID);
-    if (event.attending.contains(user)) {
+    if (event.attending.map((u) => u._id).includes(userID)) {
       return res
         .status(501)
         .json({ error: "User already attending", id, userID });
     }
-    event.attending.add(user);
+    const user = await User.findById(userID);
+    console.log(user);
+    event.attending.push(user);
+    console.log("added user");
     await event.save();
+    console.log("saved user");
     res.status(200).json({ event });
   } catch (error) {
     res.status(500).json({ error });
