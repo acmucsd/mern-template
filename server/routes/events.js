@@ -73,11 +73,8 @@ router.post("/:id/attendance/:userID", async function (req, res) {
         .json({ error: "User already attending", id, userID });
     }
     const user = await User.findById(userID);
-    console.log(user);
     event.attending.push(user);
-    console.log("added user");
     await event.save();
-    console.log("saved user");
     res.status(200).json({ event });
   } catch (error) {
     res.status(500).json({ error });
