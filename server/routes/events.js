@@ -62,7 +62,7 @@ router.delete("/:id", async function (req, res) {
   }
 });
 
-router.post("/:id/attendance", async function (req, res) {
+router.post("/:id/attendance/:userID", async function (req, res) {
   try {
     const { id, userID } = req.params;
     const event = await Event.findById(id);
