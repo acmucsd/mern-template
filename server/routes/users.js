@@ -26,8 +26,9 @@ router.post("/", async function (req, res) {
 
 router.put("/:id", async function (req, res) {
   try {
-    const { id, update } = req.params;
-    const user = await User.findByIdAndUpdate(id, update, {new: true});
+    const { id } = req.params;
+    const { update } = req.body;
+    const user = await User.findByIdAndUpdate(id, update, { new: true });
     if (!user) {
       return res.status(404).json({ error: "User does not exist", id });
     }
