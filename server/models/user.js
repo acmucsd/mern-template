@@ -40,8 +40,7 @@ const UserSchema = new mongoose.Schema(
         classes: [{ class: String, year: Number, quarter: String }],
         // Profile picture, can do AWS also
         pfp: {
-            data: Buffer,
-            contentType: String
+            type: String,
         },
 
     }
