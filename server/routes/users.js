@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const User = require("../models/user");
+const { User } = require("../models/user");
 const { upload } = require('../storage');
 
 const Event = require("../models/event");
