@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const UserSchema = require('./user');
+const { UserSchema } = require('./user');
 
 const EventSchema = new mongoose.Schema(
     {

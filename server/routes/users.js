@@ -1,14 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const UserSchema = require("../models/user");
-const User = mongoose.model('User', UserSchema);
+const User = require("../models/user");
 const { upload } = require('../storage');
 
 const Event = require("../models/event");
-// Is this the proper way to setup models?
-// Ran into problems because we use the Schemas in each other
-// so we can't export as models but we need the models for this
 
 const router = express.Router();
 
