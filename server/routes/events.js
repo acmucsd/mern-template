@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Event = require("../models/event");
-const User = require("../models/user");
+const { User } = require("../models/user");
 
 /* GET events listing. */
 //GET all events
@@ -74,6 +74,9 @@ router.post("/:id/attendance/:userID", async function (req, res) {
         .json({ error: "User already attending", id, userID });
     }
     const user = await User.findById(userID);
+    if (user === null) {
+      return res.status(404).json({ error: "User not found" });
+    }
     event.attending.push(user);
     await event.save();
     res.status(200).json({ event });
