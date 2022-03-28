@@ -1,16 +1,18 @@
 const express = require("express");
-const router = express.Router();
-const { upload } = require("../storage");
+const multer = require("multer");
+const bcrypt = require("bcrypt");
 
+const { upload } = require("../storage");
 const User = require("../models/user");
 
-const multer = require("multer");
 const fileSizeLimitInBytes = 2 * 1024 * 1024;
 const saltRounds = 7;
 const storage = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: fileSizeLimitInBytes },
 });
+
+const router = express.Router();
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -26,6 +28,7 @@ router.post("/", async function (req, res) {
   const { user } = req.body;
   const newUser = await User.create(user);
   newUser.password = await bcrypt.hash(newUser.password, saltRounds);
+  await newUser.save();
   res.status(200).json({ newUser });
 });
 
