@@ -67,6 +67,9 @@ router.post("/:id/attendance/:userID", async function (req, res) {
   try {
     const { id, userID } = req.params;
     const event = await Event.findById(id);
+    if( event === null ){
+      return res.status(404).json({ error: "Event not found" });
+    }
     const hasUserAttendedEvent = event.attending.map((u) => u._id).includes(userID)
     if (hasUserAttendedEvent) {
       return res
