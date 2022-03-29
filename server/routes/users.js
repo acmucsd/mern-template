@@ -3,7 +3,7 @@ const multer = require("multer");
 const bcrypt = require("bcrypt");
 
 const { upload } = require("../storage");
-const User = require("../models/user");
+const { User } = require("../models/user");
 
 const fileSizeLimitInBytes = 2 * 1024 * 1024;
 const saltRounds = 7;
