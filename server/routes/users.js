@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 const { upload } = require("../storage");
 const { User } = require("../models/user");
+const Event = require("../models/event");
 
 const fileSizeLimitInBytes = 2 * 1024 * 1024;
 const saltRounds = 7;
