@@ -1,7 +1,7 @@
 # 💻 MERN stack template
 
 Template for building projects with the MERN (MongoDB, Express, React, Node.js) stack.
-This template was generated using `create-react-app` and `express-generator` for the
+This template was generated using `create-next-app` and `express-generator` for the
 client and server, respectively.
 
 ## Prerequisites
@@ -18,7 +18,7 @@ DB_URL=mongodb://mongodburl.example.com:portnumber
 ## Running
 
 1. `cd` into `client` and run the command `yarn install` to install all dependencies
-2. To start the client, run `yarn start` in the same directory
+2. To start the client, run `yarn dev` in the same directory
 3. In another command window, `cd` into `server` and run `yarn install` and `yarn start`
    to install all dependencies and start the server.
 4. Happy hacking!
