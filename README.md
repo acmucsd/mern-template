@@ -8,7 +8,7 @@ client and server, respectively.
 
 - Install Node and npm [here](https://nodejs.org/en/download/)
 - Install `yarn` with the command `npm install -g yarn`
-- Set up a [MongoDB Atlas](https://www.mongodb.com/) instance. See [this video](https://www.youtube.com/watch?v=CcOL5h_ZFJM) for help!
+- Set up a [MongoDB Atlas](https://www.mongodb.com/) instance. See [this video](https://youtu.be/dRZBRHKKC5E?si=rwKqey0bYtJadzgE) for help!
 - Create a `.env` file with a variable called `DB_URL` and paste your MongoDB url:
 
 ```bash
