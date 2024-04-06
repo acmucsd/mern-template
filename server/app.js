@@ -15,9 +15,7 @@ app.use('/users', usersRouter);
 
 dotenv.config();
 
-mongoose.connect(process.env.DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true }).then(() => {
+mongoose.connect(process.env.DB_URL).then(() => {
   console.log('Connected to MongoDB database');
 });
 
